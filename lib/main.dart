@@ -6,7 +6,7 @@ import 'package:use_state_notifier/counter_view.dart';
 
 void main() {
   runApp(StateNotifierProvider<CounterController,CounterState>(
-    create: (context) => CounterController(),
+    create: (context) => CounterController(CounterRepository()),
     // child: CounterView(),
     child: MyApp(),
     //  {
