@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:use_state_notifier/counter_controller.dart';
+import 'package:use_state_notifier/counter_state.dart';
+import 'package:use_state_notifier/counter_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(StateNotifierProvider<CounterController,CounterState>(
+    create: (context) => CounterController(),
+    // child: CounterView(),
+    child: MyApp(),
+    //  {
+    //   return const MyApp();
+    // }
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -108,6 +119,9 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
+            ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const CounterView()));
+            }, child: Text('navigate')),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
